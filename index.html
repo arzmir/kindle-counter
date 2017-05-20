@@ -53,9 +53,10 @@ div i:nth-of-type(4) {
 </style>
 
 <script type="text/javascript">
-var c = function(el, axis, e) {
-	e.preventDefault();
-	el = el.parentNode.firstChild;
+var c = function(el, axis) {
+	console.log('clicked')
+	var el = el.parentNode.firstChild;
+	console.log(el)
 	el.innerHTML = parseInt(el.innerHTML) + axis;	
 }
 
@@ -63,36 +64,32 @@ var c = function(el, axis, e) {
 </head>
 <body>
 
-	<div>
-		<b>20</b>
-		<i onclick="c(this,-5, event)"></i>
-		<i onclick="c(this,-1, event)"></i>
-		<i onclick="c(this, 1, event)"></i>
-		<i onclick="c(this, 5, event)"></i>
+	<div><b>20</b>
+		<i onclick="c(this,-5)"></i>
+		<i onclick="c(this,-1)"></i>
+		<i onclick="c(this,1)"></i>
+		<i onclick="c(this,5)"></i>
 	</div>
 
-	<div>
-		<b>20</b>
-		<i onclick="c(this,-5, event)"></i>
-		<i onclick="c(this,-1, event)"></i>
-		<i onclick="c(this, 1, event)"></i>
-		<i onclick="c(this, 5, event)"></i>
+	<div><b>20</b>
+		<i onclick="c(this,-5)"></i>
+		<i onclick="c(this,-1)"></i>
+		<i onclick="c(this,1)"></i>
+		<i onclick="c(this,5)"></i>
 	</div>
 
-	<div>
-		<b>20</b>
-		<i onclick="c(this,-5, event)"></i>
-		<i onclick="c(this,-1, event)"></i>
-		<i onclick="c(this, 1, event)"></i>
-		<i onclick="c(this, 5, event)"></i>
+	<div><b>20</b>
+		<i onclick="c(this,-5)"></i>
+		<i onclick="c(this,-1)"></i>
+		<i onclick="c(this,1)"></i>
+		<i onclick="c(this,5)"></i>
 	</div>
 
-	<div>
-		<b>20</b>
-		<i onclick="c(this,-5, event)"></i>
-		<i onclick="c(this,-1, event)"></i>
-		<i onclick="c(this, 1, event)"></i>
-		<i onclick="c(this, 5, event)"></i>
+	<div><b>20</b>
+		<i onclick="c(this,-5)"></i>
+		<i onclick="c(this,-1)"></i>
+		<i onclick="c(this,1)"></i>
+		<i onclick="c(this,5)"></i>
 	</div>
 
 </body>
