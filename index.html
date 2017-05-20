@@ -1,0 +1,282 @@
+<!doctype html>
+<head>
+<title>Kindle Counter</title>
+<style type="text/css">
+html, body {
+	overflow:hidden;
+}
+
+body {
+	font-family: Impact;
+}
+* { margin:0; padding:0; }
+
+#settings {
+	position:absolute;
+	z-index:99;
+	width:50px;
+	height:50px;
+	left:0;
+	top:50%;
+	margin-top:-25px;
+	background:#fff;
+}
+
+
+#wrapper {
+	position:absolute;
+	z-index:1;
+	left:0;
+	top:0;
+	background:#f90;
+	text-align:center;
+}
+
+#wrapper, #wrapper div {
+	pointer-events: none;
+}
+
+#wrapper span {
+	pointer-events: all;
+}
+
+.landscape #wrapper { width:100vw; height:100vh; }
+.portrait #wrapper { width:100vh; height:100vw; }
+.sector { margin:5px; }
+
+.landscape .two .sector {
+	display:inline-flex;
+	flex-direction:column;
+	width:49%;
+	height:100%;
+	background:#080;
+	overflow:hidden;
+}
+
+.landscape .two > div:nth-of-type(2) { 
+	transform: rotate(180deg);
+}
+
+.sector > div {
+	flex-grow:1;
+	background:#888;
+	display:flex;
+	flex-direction:column;
+}
+.life {
+	flex-grow:4;
+	position:relative;
+	line-height:80vmin;
+	font-size:40vmin;
+}
+
+.sector > div > div:nth-of-type(2) {
+	flex-grow:1;
+	display:flex;
+	flex-direction:row;
+}
+
+.energy, .poison {
+	flex-grow:1;
+	position:relative;
+	line-height:20vmin;
+	font-size:10vmin;
+}
+
+.sector span {
+	position:absolute;
+	height:100%;
+	width:50%;
+	left:0;
+	top:0;
+	border:1px solid #080;
+}
+
+.sector span:nth-of-type(2) {
+	left:50%;
+}
+
+
+</style>
+</head>
+<body class="landscape">
+
+<div id="wrapper" class=""></div>
+
+<div id="settings">
+	CLICK ME
+</div>
+
+
+
+<!--
+
+<div id="left">
+	<div id="p1">
+		<div class="life"><div>20</div><span class="sub"></span><span class="add"></span></div>
+		<div>
+			<div class="energy"><div>0</div><span class="sub"></span><span class="add"></span></div>
+			<div class="poison"><div>0</div><span class="sub"></span><span class="add"></span></div>
+		</div>
+	</div>
+</div>
+<div id="right">
+	<div id="p2">
+		<div class="life"><div>20</div><span class="sub"></span><span class="add"></span></div>
+		<div>
+			<div class="energy"><div>A</div><span class="sub"></span><span class="add"></span></div>
+			<div class="poison"><div>B</div><span class="sub"></span><span class="add"></span></div>
+		</div>
+	</div>
+</div>
+-->
+
+
+
+<script type="text/javascript">
+
+const players = {
+	"Player1": { life: 20, energy: 0, poison: 0},
+	"Player2": { life: 20, energy: 0, poison: 0}
+};
+
+
+
+
+
+const html = '<div id="player_name"><div class="life"><div>20</div><span class="sub"></span><span class="add"></span></div><div><div class="energy"><div>B</div><span class="sub"></span><span class="add"></span></div><div class="poison"><div>A</div><span class="sub"></span><span class="add"></span></div></div></div>';
+
+const getEmptyWrapper = function() {
+	let wrapper = document.getElementById('wrapper')
+	wrapper.innerHTML = '';
+	
+	return wrapper;
+}
+
+const createSectorElements = function (num) {
+	let sectors = [];
+	
+	for (let i = 1; i < num+1; i++) {
+		let newSector = document.createElement("div");
+		newSector.className = "sector"
+		
+		sectors.push(newSector)
+	}
+	
+	return sectors;
+}
+
+const createPlayerElements = function() {
+	const playerElements = []
+	
+	for (let key in players) {
+		let playerHTML = html.replace(/player_name/, key);
+		let playerElement = document.createElement('i');
+		playerElement.innerHTML = playerHTML;
+		playerElement = playerElement.firstChild
+		
+		playerElement.addEventListener("click", function(ev) {
+			console.log(ev);
+			count(ev.path);
+		});
+		
+		playerElements.push(playerElement);
+	}
+	
+	return playerElements;
+}
+
+
+const count = function (path) {
+	let player = null;
+	let counter = null;
+	let action = null;
+	
+	for(let i = 0; i < path.length; i++) {
+		const id = path[i].id
+		if (id === 'wrapper') break;
+		
+		const c = path[i].className
+		
+		if (['sub','add'].indexOf(c) > -1) 
+			action = c;
+		
+		if (['life','poison','energy'].indexOf(c) > -1) 
+			counter = c;
+		
+		if (id !== '') player = id
+	}
+	
+	
+	console.log (`Player: ${player}, Counter: ${counter}, Action: ${action}` )
+	if(action === 'sub') {
+		players[player][counter] -= 1
+	} else if (action === 'add') {
+		players[player][counter] += 1
+	}
+	
+	
+	document.getElementById(player).getElementsByClassName(counter)[0].firstChild.innerHTML = players[player][counter]
+	
+	
+}
+
+const initGame = function() {
+	let wrapper = getEmptyWrapper();
+	let playerNames = Object.keys(players)
+	
+	let sectorElements = []
+	
+	if (playerNames.length === 3) {
+		sectorElements = createSectorElements(3)
+	} else {
+		sectorElements = createSectorElements(2)
+	}
+	
+	
+	let playerElements = createPlayerElements()
+	
+	
+	
+	let i = 0;
+	while (playerElements.length > 0) {
+		console.log(i)
+		console.log(sectorElements[i])
+		sectorElements[i].appendChild(playerElements.shift());
+		i = (i+1) % sectorElements.length;
+	}
+	
+	if (sectorElements.length === 6) {
+		wrapper.className = "six"
+	} else if (sectorElements.length === 3) {
+		wrapper.className = "three"
+	} else if (sectorElements.length === 4) {
+		wrapper.className = "four"
+	} else if (sectorElements.length === 5) {
+		wrapper.className = "five"
+	} else {
+		wrapper.className = "two"
+	}
+	
+	while (sectorElements.length > 0) {
+		wrapper.appendChild(sectorElements.shift());
+	}
+	
+}
+
+
+
+
+initGame();
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
