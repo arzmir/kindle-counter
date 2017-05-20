@@ -2,25 +2,56 @@
 <head>
 <title>Kindle Counter</title>
 <style type="text/css">
+body {
+ text-align:center;
+}
 div {
-width:100px;
-height:100px;
-margin:25% auto;
-background:#333;
-color:#fff;
+	display:inline-block;
+	width:40vw;
+	height:48vh;
+	background:#333;
+	color:#fff;
+	font-size:5vmin;
+	overflow:hidden;
+	line-height:48vh;
+	font-size:30vmin;
+	text-align:center;
+	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+	position:relative;
+}
+
+div i {
+	position:absolute;
+	display:block;
+	height:100%;
+	width:50%;
+	top:0;
+	left:0;
+	border:1px solid #000;
+}
+
+div i:nth-of-type(2) {
+	left:50%;
+}
+
+div:nth-of-type(1), div:nth-of-type(2) {
+	transform:rotate(180deg);
 }
 </style>
 
 <script type="text/javascript">
-var decrease = function(e) {
-	var old = e.innerHTML;
-	e.innerHTML = old - 1;
+var crease = function(el, axis) {
+	el = el.parentNode.firstChild;
+	el.innerHTML = parseInt(el.innerHTML) + axis;	
 }
+
 </script>
 </head>
 <body>
-
-<div onclick="decrease(this)">20</div>
+<div><b>20</b><i onclick="crease(this,-1)"></i><i onclick="crease(this,1)"></i></div>
+<div><b>20</b><i onclick="crease(this,-1)"></i><i onclick="crease(this,1)"></i></div>
+<div><b>20</b><i onclick="crease(this,-1)"></i><i onclick="crease(this,1)"></i></div>
+<div><b>20</b><i onclick="crease(this,-1)"></i><i onclick="crease(this,1)"></i></div>
 
 
 </body>
