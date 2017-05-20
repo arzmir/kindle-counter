@@ -28,7 +28,6 @@ body {
 	z-index:1;
 	left:0;
 	top:0;
-	background:#f90;
 	text-align:center;
 }
 
@@ -49,7 +48,6 @@ body {
 	flex-direction:column;
 	width:49%;
 	height:100%;
-	background:#080;
 	overflow:hidden;
 }
 
@@ -59,7 +57,6 @@ body {
 
 .sector > div {
 	flex-grow:1;
-	background:#888;
 	display:flex;
 	flex-direction:column;
 }
@@ -89,7 +86,6 @@ body {
 	width:50%;
 	left:0;
 	top:0;
-	border:1px solid #080;
 }
 
 .sector span:nth-of-type(2) {
@@ -99,37 +95,13 @@ body {
 
 </style>
 </head>
-<body class="landscape">
+<body class="landscape" onload="initGame">
 
 <div id="wrapper" class=""></div>
 
 <div id="settings">
 	CLICK ME
 </div>
-
-
-
-<!--
-
-<div id="left">
-	<div id="p1">
-		<div class="life"><div>20</div><span class="sub"></span><span class="add"></span></div>
-		<div>
-			<div class="energy"><div>0</div><span class="sub"></span><span class="add"></span></div>
-			<div class="poison"><div>0</div><span class="sub"></span><span class="add"></span></div>
-		</div>
-	</div>
-</div>
-<div id="right">
-	<div id="p2">
-		<div class="life"><div>20</div><span class="sub"></span><span class="add"></span></div>
-		<div>
-			<div class="energy"><div>A</div><span class="sub"></span><span class="add"></span></div>
-			<div class="poison"><div>B</div><span class="sub"></span><span class="add"></span></div>
-		</div>
-	</div>
-</div>
--->
 
 
 
@@ -263,20 +235,6 @@ const initGame = function() {
 	}
 	
 }
-
-
-
-
-initGame();
-
-
-
-
-
-
-
-
-
 
 </script>
 </body>
