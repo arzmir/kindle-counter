@@ -8,13 +8,13 @@ body {
 
 div {
 	display:inline-block;
-	width:300px;
-	height:400px;
+	width:450px;
+	height:550px;
 	background:#333;
 	color:#fff;
 	overflow:hidden;
-	line-height:400px;
-	font-size:200px;
+	line-height:550px;
+	font-size:350px;
 	text-align:center;
 	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
 	position:relative;
@@ -48,8 +48,8 @@ var crease = function(el, axis) {
 </script>
 </head>
 <body>
-<div><b>20</b><i onclick="crease(this,-1)"></i><i onclick="crease(this,1)"></i></div>
-<div><b>20</b><i onclick="crease(this,-1)"></i><i onclick="crease(this,1)"></i></div>
+<div style="transform:rotate(180deg)"><b>20</b><i onclick="crease(this,-1)"></i><i onclick="crease(this,1)"></i></div>
+<div style="transform:rotate(180deg)"><b>20</b><i onclick="crease(this,-1)"></i><i onclick="crease(this,1)"></i></div>
 <div><b>20</b><i onclick="crease(this,-1)"></i><i onclick="crease(this,1)"></i></div>
 <div><b>20</b><i onclick="crease(this,-1)"></i><i onclick="crease(this,1)"></i></div>
 
