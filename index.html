@@ -60,10 +60,24 @@ var c = function(el, axis) {
 	el.innerHTML = parseInt(el.innerHTML) + axis;	
 }
 
+var create = function() {
+	var players = ["one", "two", "three", "four"];
+	var outer = document.createElement("div")
+	
+	for(var i = 0; i < players.length; i++) {
+		var el = document.createElement("div")
+		el.innerHTML = players[i];
+		players[i] = el;
+		outer.appendChild(el)
+	}
+	
+	document.body.appendChild(outer);
+}
 </script>
 </head>
-<body>
+<body onload="create()">
 
+<!--
 	<div><b>20</b>
 		<i onclick="c(this,-5)"></i>
 		<i onclick="c(this,-1)"></i>
@@ -91,5 +105,5 @@ var c = function(el, axis) {
 		<i onclick="c(this,1)"></i>
 		<i onclick="c(this,5)"></i>
 	</div>
-
+-->
 </body>
