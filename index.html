@@ -66,12 +66,13 @@ var create = function() {
 	
 	for(var i = 0; i < players.length; i++) {
 		var el = document.createElement("div")
-		el.innerHTML = players[i];
+		el.innerHTML = document.documentElement.clientWidth + " " + document.documentElement.clientHeight;
 		players[i] = el;
 		outer.appendChild(el)
 	}
 	
 	document.body.appendChild(outer);
+	
 }
 </script>
 </head>
