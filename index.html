@@ -62,10 +62,10 @@ var c = function(el, axis) {
 
 var create = function() {
 	var players = ["one", "two", "three", "four"];
-	var outer = document.createElement("div")
+	var outer = document.createElement("i")
 	
 	for(var i = 0; i < players.length; i++) {
-		var el = document.createElement("div")
+		var el = document.createElement("h1")
 		el.innerHTML = document.documentElement.clientWidth + " " + document.documentElement.clientHeight;
 		players[i] = el;
 		outer.appendChild(el)
