@@ -8,48 +8,22 @@ body {
 
 div {
 	display:inline-block;
-	width:450px;
-	height:550px;
+	width:530px;
+	height:630px;
 	background:#eee;
 	color:#000;
 	overflow:hidden;
-	line-height:550px;
-	font-size:350px;
 	text-align:center;
 	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
 	position:relative;
-	margin:15px;
+	margin:2px 3px;
+	pointer-events:none;
 }
 
-div i {
-	position:absolute;
-	display:block;
-	height:100%;
-	top:0;
+div > h1 {
+	line-height:630px;
+	font-size:450px;
 }
-
-div i:nth-of-type(1) {
-	left:0%;
-	width:15%
-}
-
-div i:nth-of-type(2) {
-	left:15%;
-	width:35%;
-}
-
-div i:nth-of-type(3) {
-	left:50%;
-	width:35%;
-}
-
-div i:nth-of-type(4) {
-	left:85%;
-	width:15%;
-}
-
-
-
 </style>
 
 <script type="text/javascript">
@@ -77,6 +51,23 @@ var create = function() {
 </script>
 </head>
 <body onload="create()">
+
+<div>
+	<h1>20</h1>
+</div>
+
+<div>
+	<h1>19</h1>
+</div>
+
+<div>
+	<h1>18</h1>
+</div>
+
+<div>
+	<h1>17</h1>
+</div>
+
 
 <!--
 	<div><b>20</b>
