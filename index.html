@@ -25,16 +25,24 @@ div > h1 {
 	font-size:400px;
 	padding:0;
 	margin:0;
+	pointer-events:none;
 }
+
+div > span {
+	display:block;
+	position:absolute;
+	width:255px;
+	height:310px;
+	text-align:center;
+	font-weight:bold;
+	font-size:20px;
+	line-height:120px;
+}
+
 </style>
 
 <script type="text/javascript">
-var c = function(el, axis) {
-	console.log('clicked')
-	var el = el.parentNode.firstChild;
-	console.log(el)
-	el.innerHTML = parseInt(el.innerHTML) + axis;	
-}
+
 
 var create = function() {
 	var players = ["one", "two", "three", "four"];
@@ -56,18 +64,31 @@ var create = function() {
 
 <div>
 	<h1>20</h1>
+	<span style="left:0; top:0;">+1</span>
+	<span style="left:50%; top:0;">+5</span>
+	<span style="left:0; top:50%; line-height:480px;">-1</span>
+	<span style="left:50%; top:50%; line-height:480px;">-5</span>
 </div>
-
 <div>
-	<h1>19</h1>
+	<h1>20</h1>
+	<span style="left:0; top:0;">+1</span>
+	<span style="left:50%; top:0;">+5</span>
+	<span style="left:0; top:50%; line-height:480px;">-1</span>
+	<span style="left:50%; top:50%; line-height:480px;">-5</span>
 </div>
-
 <div>
-	<h1>18</h1>
+	<h1>20</h1>
+	<span style="left:0; top:0;">+1</span>
+	<span style="left:50%; top:0;">+5</span>
+	<span style="left:0; top:50%; line-height:480px;">-1</span>
+	<span style="left:50%; top:50%; line-height:480px;">-5</span>
 </div>
-
 <div>
-	<h1>17</h1>
+	<h1>20</h1>
+	<span style="left:0; top:0;">+1</span>
+	<span style="left:50%; top:0;">+5</span>
+	<span style="left:0; top:50%; line-height:480px;">-1</span>
+	<span style="left:50%; top:50%; line-height:480px;">-5</span>
 </div>
 
 
