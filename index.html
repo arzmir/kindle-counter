@@ -34,7 +34,11 @@ body {
 }
 
 .outer div.inverted {
-	background:#000;
+	background-image:url('skull.png');
+	background-repeat:no-repeat;
+	background-color: #000;
+	background-position:top center;
+	background-size:auto 50%;
 	color:#fff;
 }
 
@@ -78,10 +82,10 @@ body {
 
 <script type="text/javascript">
 var p = {
-	"one": [20, null],
-	"two": [20, null],
-	"three": [20, null],
-	"four": [20, null],
+	"one": [1, null],
+	"two": [40, null],
+	"three": [40, null],
+	"four": [40, null],
 }
 
 var outer = document.createElement("div");
@@ -162,6 +166,16 @@ var st = document.createElement("style");
 st.type = "text/css";
 
 
+var sizing = ""
+sizing += "\n" + ".outer div { width: "+ cwidth +"px;	height: "+ cheight +"px;	margin: "+ cmargin +"px;}"
+sizing += "\n" + ".outer div > h1 {	line-height: "+ cheight +"px;	font-size: "+ cheight*0.6 +"px;}";
+sizing += "\n" + ".outer div > span {	width: "+ cwidth/2 +"px;	height: "+ cheight/2 +"px;	font-size: "+ cheight/20 +"px;	line-height: "+ cheight/5 +"px;}";
+sizing += "\n" + ".outer div.inverted h1 {	line-height: "+ cheight*1.3 +"px;	font-size: "+ cheight*0.3 +"px;}";
+
+
+st.innerHTML = sizing;
+
+console.log(sizing)
 
 var create = function() {
 	document.head.appendChild(st);
