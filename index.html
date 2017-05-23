@@ -33,6 +33,11 @@ body {
 	pointer-events:none;
 }
 
+.outer div.inverted {
+	background:#000;
+	color:#fff;
+}
+
 .outer div > span {
 	display:block;
 	position:absolute;
@@ -89,6 +94,13 @@ outer.className = "outer"
 
 var update = function (el, value) {
 	p[el][0] += value;
+	
+	if (p[el][0] < 1) { 
+		p[el][1].parentNode.className = "inverted";
+	} else {
+		p[el][1].parentNode.className = "";
+	}
+	
 	p[el][1].innerHTML = p[el][0]
 }
 
