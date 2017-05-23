@@ -162,13 +162,6 @@ var st = document.createElement("style");
 st.type = "text/css";
 
 
-var sizing = ""
-sizing += `\n .outer div { width: ${cwidth}px;	height: ${cheight}px;	margin: ${cmargin}px;}`;
-sizing += `\n .outer div > h1 {	line-height: ${cheight}px;	font-size: ${0.6 * cheight}px;}`;
-sizing += `\n .outer div > span {	width: ${cwidth / 2}px;	height: ${cheight / 2}px;	font-size: ${cheight / 20}px;	line-height: ${cheight / 5}px;}`;
-
-st.innerHTML = sizing;
-
 
 var create = function() {
 	document.head.appendChild(st);
