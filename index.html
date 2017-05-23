@@ -87,6 +87,7 @@ var outer = document.createElement("div");
 outer.className = "outer"
 
 var update = function (el, value) {
+console.log(el, value);
 	p[el][0] += value;
 	p[el][1].innerHTML = p[el][0]
 	console.log("test")
@@ -99,6 +100,7 @@ var reset = function(value) {
 	}
 }
 
+var rebindKey = function(key) { console.log(key)};
 
 for (key in p) {
 	var div = document.createElement("div");
@@ -108,8 +110,10 @@ for (key in p) {
 	var span1 = document.createElement("span");
 	span1.innerHTML = "+1";
 	span1.setAttribute("style", "left:0; top:0;");
-	span1.setAttribute("onClick", "update('"+key+"', 1)");
-	
+	// span1.setAttribute("onClick", "update('"+key+"', 1)");
+    span1.addEventListener("click", function(e) {e.preventDefault(); update(key,1)}, true);
+
+
 	
 	var span2 = document.createElement("span");
 	span2.innerHTML = "+5";
