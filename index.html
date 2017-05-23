@@ -96,7 +96,6 @@ var update = function (name, v) {
 	var n = o + v
 	var el = p[name][1]
 	
-	
 	if ((v < 0 && n < 1 && o > 0)||(v > 0 && n > 0 && o < 1)) { el.parentNode.classList.toggle("inverted") }
 	
 	p[name][0] = n;
@@ -111,7 +110,6 @@ var reset = function(value) {
 	}
 }
 
-var rebindKey = function(key) { console.log(key)};
 
 for (key in p) {
 	var div = document.createElement("div");
@@ -160,8 +158,6 @@ var cmargin = 5;
 var cwidth = vw / 2 - cmargin * 2;
 var cheight = vh / 2 - cmargin * 2;
 
-
-
 var st = document.createElement("style");
 st.type = "text/css";
 
@@ -172,18 +168,16 @@ sizing += "\n" + ".outer div > h1 {	line-height: "+ cheight +"px;	font-size: "+ 
 sizing += "\n" + ".outer div > span {	width: "+ cwidth/2 +"px;	height: "+ cheight/2 +"px;	font-size: "+ cheight/20 +"px;	line-height: "+ cheight/5 +"px;}";
 sizing += "\n" + ".outer div.inverted h1 {	line-height: "+ cheight*1.3 +"px;	font-size: "+ cheight*0.3 +"px;}";
 
-
 st.innerHTML = sizing;
 
-console.log(sizing)
 
-var create = function() {
+var init = function() {
 	document.head.appendChild(st);
 	document.body.appendChild(outer);
 }
 </script>
 </head>
-<body onload="create()">
+<body onload="init()">
 	<div class="reset">
 		<a onclick="reset(20)">20</a>
 		<a onclick="reset(40)">40</a>
