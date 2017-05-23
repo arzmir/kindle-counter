@@ -1,6 +1,7 @@
 <!doctype html>
 <head>
 <title>Kindle Counter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <style type="text/css">
 body {
  text-align:center;
@@ -111,7 +112,7 @@ for (key in p) {
 	span1.innerHTML = "+1";
 	span1.setAttribute("style", "left:0; top:0;");
 	// span1.setAttribute("onClick", "update('"+key+"', 1)");
-    span1.addEventListener("click", function(e) {e.preventDefault(); update(key,1)}, true);
+    span1.addEventListener("click", function(e) {e.stopPropagation(); update(key,1)}, true);
 
 
 	
