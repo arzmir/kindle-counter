@@ -92,21 +92,22 @@ var p = {
 var outer = document.createElement("div");
 outer.className = "outer"
 
-var update = function (el, value) {
-	p[el][0] += value;
+var update = function (name, v) {
+	var o = p[name][0]
+	var n = o + v
+	var el = p[name][1]
 	
-	if (p[el][0] < 1) { 
-		p[el][1].parentNode.className = "inverted";
-	} else {
-		p[el][1].parentNode.className = "";
-	}
 	
-	p[el][1].innerHTML = p[el][0]
+	if ((v < 0 && n < 1 && o > 0)||(v > 0 && n > 0 && o < 1)) { el.parentNode.classList.toggle("inverted") }
+	
+	p[name][0] = n;
+	el.innerHTML = n
 }
 
 var reset = function(value) {
 	for (key in p) {
 		p[key][0] = value
+		p[key][1].parentNode.className = ''
 		p[key][1].innerHTML = value
 	}
 }
@@ -121,11 +122,8 @@ for (key in p) {
 	var span1 = document.createElement("span");
 	span1.innerHTML = "+1";
 	span1.setAttribute("style", "left:0; top:0;");
-	// span1.setAttribute("onClick", "update('"+key+"', 1)");
-    span1.addEventListener("click", function(e) {e.stopPropagation(); update(key,1)}, true);
-
-
-	
+	span1.setAttribute("onClick", "update('"+key+"', 1)");
+    
 	var span2 = document.createElement("span");
 	span2.innerHTML = "+5";
 	span2.setAttribute("style", "left:50%; top:0;");
@@ -164,6 +162,6 @@ var create = function() {
 <body onload="create()">
 	<div class="reset">
 		<a onclick="reset(20)">20</a>
-		<a onclick="reset(50)">40</a>
+		<a onclick="reset(40)">40</a>
 	</div>
 </body>
