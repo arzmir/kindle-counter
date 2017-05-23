@@ -163,7 +163,6 @@ var cheight = Math.floor(vh / 2 - cmargin * 2);
 var st = document.createElement("style");
 st.type = "text/css";
 
-console.log(st);
 
 var sizing = ""
 sizing += `\n .outer div { width: ${cwidth}px;	height: ${cheight}px;	margin: ${cmargin}px;}`;
@@ -175,7 +174,6 @@ st.innerHTML = sizing;
 
 
 var create = function() {
-	console.log(document.head)
 	document.head.appendChild(st);
 	document.body.appendChild(outer);
 }
