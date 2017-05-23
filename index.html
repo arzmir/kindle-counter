@@ -78,6 +78,22 @@ body {
 }
 
 .reset a:nth-of-type(2) { left: 50px; background:#777;}
+
+.outer div:nth-of-type(1), .outer div:nth-of-type(2) {
+	-webkit-transform: rotate(-180deg);
+
+	/* Firefox */
+	-moz-transform: rotate(-180deg);
+
+	/* IE */
+	-ms-transform: rotate(-180deg);
+
+	/* Opera */
+	-o-transform: rotate(-180deg);
+
+	/* Internet Explorer */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
 </style>
 
 <script type="text/javascript">
