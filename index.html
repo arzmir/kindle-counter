@@ -3,8 +3,13 @@
 <title>Kindle Counter</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <style type="text/css">
+html, body {
+	margin:0; 
+	padding:0;
+}
 body {
  text-align:center;
+ overflow:hidden;
 }
 
 .outer {
@@ -13,21 +18,16 @@ body {
 }
 .outer div {
 	display:inline-block;
-	width:510px;
-	height:620px;
 	background:#eee;
 	color:#000;
 	overflow:hidden;
 	text-align:center;
 	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
 	position:relative;
-	margin:2px 3px;
 	pointer-events:none;
 }
 
 .outer div > h1 {
-	line-height:620px;
-	font-size:400px;
 	padding:0;
 	margin:0;
 	pointer-events:none;
@@ -41,12 +41,8 @@ body {
 .outer div > span {
 	display:block;
 	position:absolute;
-	width:255px;
-	height:310px;
 	text-align:center;
 	font-weight:bold;
-	font-size:20px;
-	line-height:120px;
 	z-index:100;
 	pointer-events:all;
 }
@@ -62,7 +58,6 @@ body {
 	margin-left:-50px;
 	overflow:hidden;
 	border-radius:50px;
-	
 }
 
 .reset a {
@@ -153,8 +148,35 @@ for (key in p) {
 	outer.appendChild(div);
 }
 
+console.log("here")
+
+
+var vw = document.documentElement.clientWidth;
+var vh = document.documentElement.clientHeight;
+
+var cmargin = 5;
+var cwidth = Math.floor(vw / 2 - cmargin * 2);
+var cheight = Math.floor(vh / 2 - cmargin * 2);
+
+
+
+var st = document.createElement("style");
+st.type = "text/css";
+
+console.log(st);
+
+var sizing = ""
+sizing += `\n .outer div { width: ${cwidth}px;	height: ${cheight}px;	margin: ${cmargin}px;}`;
+sizing += `\n .outer div > h1 {	line-height: ${cheight}px;	font-size: ${0.6 * cheight}px;}`;
+sizing += `\n .outer div > span {	width: ${cwidth / 2}px;	height: ${cheight / 2}px;	font-size: ${cheight / 20}px;	line-height: ${cheight / 5}px;}`;
+
+console.log(sizing)
+st.innerHTML = sizing;
+
 
 var create = function() {
+	console.log(document.head)
+	document.head.appendChild(st);
 	document.body.appendChild(outer);
 }
 </script>
