@@ -88,10 +88,8 @@ var outer = document.createElement("div");
 outer.className = "outer"
 
 var update = function (el, value) {
-console.log(el, value);
 	p[el][0] += value;
 	p[el][1].innerHTML = p[el][0]
-	console.log("test")
 }
 
 var reset = function(value) {
@@ -154,6 +152,6 @@ var create = function() {
 <body onload="create()">
 	<div class="reset">
 		<a onclick="reset(20)">20</a>
-		<a onclick="reset(40)">40</a>
+		<a onclick="reset(50)">40</a>
 	</div>
 </body>
